@@ -1,0 +1,25 @@
+<div class="login-wrapper">
+  <mat-card>
+    <h2>Login</h2>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>E-mail</mat-label>
+        <input matInput type="email" formControlName="email" />
+        <mat-error *ngIf="f['email'].errors?.['required']">Obrigatório</mat-error>
+        <mat-error *ngIf="f['email'].errors?.['email']">E-mail inválido</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full">
+        <mat-label>Senha</mat-label>
+        <input matInput type="password" formControlName="senha" />
+        <mat-error *ngIf="f['senha'].errors?.['required']">Obrigatória</mat-error>
+        <mat-error *ngIf="f['senha'].errors?.['minlength']">Mínimo 4 caracteres</mat-error>
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">
+        Entrar
+      </button>
+    </form>
+  </mat-card>
+</div>
